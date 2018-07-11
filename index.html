@@ -17,32 +17,43 @@
 	<header id="mainHeader">
 		<nav id="mainMenu" style="display: none;">
 			<div class="header-menu">
-				<h2>Menu</h2>
+				<h3>Dom Luiggi</h3>
 			</div>
 			<ul>
-				<li>
+				<li class="active">
 					<a href="index.html">
 						Home
 					</a>
 				</li>
 
-				<li class="active">
-					Cardápio
+				<li>
+					<a href="cardapio.html">
+						Cardápio
+					</a>
 				</li>
 				<li>
-					Promoções
+					<a href="index.html">
+						Promoções
+					</a>
 				</li>
 				<li>
-					Entrega
+					<a href="index.html">
+						Entrega
+					</a>
 				</li>
 				<li>
-					Contato
+					<a href="index.html">
+						Contato
+					</a>
 				</li>
 			</ul>
 		</nav>
 		<div class="logo">
-			Dom Luiggi
+			<a href="index.html">
+				<h3>Dom Luiggi</h3>
+			</a>
 		</div>
+		<div class="nothing"></div>
 		<div class="menu">
 			<button id="menuButton" class="menu btn-i corner-b fixed-b" onclick="$('#mainMenu').toggle();">
 				<i class="material-icons">
@@ -56,111 +67,97 @@
 
 	<section class="fullscreen bg-pizza">
 		<div class="grid" style="background-color: rgba(0,0,0,0.5);">
-			<div class="wrap center-y">
+			<div class="wrap magic-padding-x center-y">
 				<div class="um">
-					<div>
-						<h1 style="color: #fff;">Pizzaria Dom Luiggi. A Melhor Pizzaria nos Ingleses!</h1>
-						<a href="cardapio.html">
-							<button class="btn corner-a">
-								Ver Cardápio
-							</button>
-						</a>
-					</div>
+					<h1 style="color: #fff;">Pizzaria Dom Luiggi. A Melhor Pizzaria nos Ingleses!</h1>
+					<a href="cardapio.html">
+						<button class="btn corner-a">
+							Ver Cardápio
+						</button>
+					</a>
 				</div>
 			</div>
 		</div>
 	</section>
 	<section id="promo" class="bg-brand1 round-c">
 		<div class="grid">
-			<div class="wrap">
-				<div class="um l-dois">
-					<div class="um">
-						<h1>Peça uma pizza<br>e concorra a outra!
-						</h1>
-						<p>
-							Todos os dias, ao pedir uma pizza,<br>você pode ganhar outra na hora!<br>
-						</p>
-						<div>
-							<button class="btn corner-a">
-								Pedir Online
-							</button>
-						</div>
-					</div>
+			<div class="wrap magic-padding-x magic-padding-y">
+				<div class="um txt-white">
+					<h1>Peça uma pizza<br>e concorra a outra!
+					</h1>
+					<p>
+						Todos os dias, ao pedir uma pizza,<br>você pode ganhar outra na hora!<br>
+					</p>
 					<div>
-						<div class="um">
-							<img src="img/pizza.jpg" alt="" class="fluid">
-						</div>
+						<button class="btn corner-a">
+							Pedir Online
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section style="background-color: #F5F1ED;">
-		<div class="wrap">
-			<div>
-				<h1>Pizzas mais pedidas</h1>
-			</div>
-			<div id="cardapio">
-				<ul id="pizzas-tradicionais">
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-							<p class="item-price">Grande R$ 50</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img round-a">
-					</li>
+	<section style="background-color: #F5F1ED; padding: 3rem 0;">
+		<div id="cardapio" class="cardapio_wrap" style="margin-bottom: 1.5rem;>
+		<ul id="pizzas-tradicionais">
+			<li class="cardapio-item">
+				<div class="item-info">
+					<h4 class="item-title">Frango com Catupiry</h4>
+					<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+					<p class="item-price">Grande R$ 50</p>
+				</div>
+				<img src="img/sabora.jpg" class="item-img">
+			</li>
 
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-							<p class="item-price">Grande R$ 50</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
-					</li>
+			<li class="cardapio-item">
+				<div class="item-info">
+					<h4 class="item-title">Frango com Catupiry</h4>
+					<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+					<p class="item-price">Grande R$ 50</p>
+				</div>
+				<img src="img/sabora.jpg" class="item-img">
+			</li>
 
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-							<p class="item-price">Grande R$ 50</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
-					</li>
-				</ul>
-			</div>
-			<div>
-				<a href="cardapio.html">
-					<button class="btn corner-a bg-brand1">
-						Ver Cardápio Completo
-					</button>
-				</a>
-			</div>
+			<li class="cardapio-item">
+				<div class="item-info">
+					<h4 class="item-title">Frango com Catupiry</h4>
+					<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+					<p class="item-price">Grande R$ 50</p>
+				</div>
+				<img src="img/sabora.jpg" class="item-img">
+			</li>
+		</ul>
+	</div>
+	<div class="wrap magic-padding-x">
+		<a href="cardapio.html">
+			<button class="btn corner-a bg-brand1">
+				Ver Cardápio Completo
+			</button>
+		</a>
+	</div>
+</section>
+
+<section id="contato" class="grid bg-brand1 round-a txt-white">
+	<div class="wrap magic-padding-x magic-padding-y">
+		<div class="um">
+			<p>
+				Peça agora
+			</p>
+			<h1>
+				3282-0048<br>
+				98470-7656 <span>Oi</span><br>
+				99645-2581 <span>Tim</span>
+			</h1>
+			<p>
+				Aberto Das 18h às 23h30
+				*fechado nas Terças-feiras 
+			</p>
 		</div>
-	</section>
-
-	<section id="contato" class="grid bg-brand1 round-a txt-white">
-		<div class="wrap">
-			<div class="um">
-				<p>
-					Peça agora
-				</p>
-				<h1>
-					3282-0048<br>
-					98470-7656 <span>Oi</span><br>
-					99645-2581 <span>Tim</span>
-				</h1>
-				<p>
-					Aberto Das 18h às 23h30
-					*fechado nas Terças-feiras 
-				</p>
-			</div>
-		</div>
-	</section>
-	<footer class="grid um">
-	</footer>
+	</div>
+</section>
+<footer class="grid um">
+</footer>
 
 </body>
 </html>

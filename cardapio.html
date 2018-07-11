@@ -13,11 +13,11 @@
 	crossorigin="anonymous"></script>
 	<script src="js/ahto.js"></script>
 </head>
-<body style="background-color: #F5F1ED;">
+<body style="background-color: #F5F1ED; padding-top: 5.5rem;">
 	<header id="mainHeader">
 		<nav id="mainMenu" style="display: none;">
 			<div class="header-menu">
-				<h2>Menu</h2>
+				<h3>Dom Luiggi</h3>
 			</div>
 			<ul>
 				<li>
@@ -27,22 +27,35 @@
 				</li>
 
 				<li class="active">
-					Cardápio
+					<a href="cardapio.html">
+						Cardápio
+					</a>
 				</li>
 				<li>
-					Promoções
+					<a href="index.html">
+						Promoções
+					</a>
 				</li>
 				<li>
-					Entrega
+					<a href="index.html">
+						Entrega
+					</a>
 				</li>
 				<li>
-					Contato
+					<a href="index.html">
+						Contato
+					</a>
 				</li>
 			</ul>
 		</nav>
+		
 		<div class="logo">
-			Dom Luiggi
+			<a href="index.html">
+				<h3>Dom Luiggi</h3>
+			</a>
 		</div>
+		
+		<div class="nothing"></div>
 		<div class="menu">
 			<button id="menuButton" class="menu btn-i corner-b fixed-b" onclick="$('#mainMenu').toggle();">
 				<i class="material-icons">
@@ -51,135 +64,102 @@
 			</button>
 		</div>
 	</header>
+
 	<!-- <div class="btn bg-brand1 move fixed-c corner-c">Pedir online</div> -->
-
-	<section>
-
+	<hedaer id="pageHeader">
 		<div class="wrap">
-			<hedaer id="pageHeader">
-				<div class="pageHeader_title">
+			<div class="pageHeader_title">
+				<a href="index.html">
 					<button class="btn-i">
 						<i class="material-icons">
 							arrow_back
 						</i>
 					</button>
-					<h1>Cardápio</h1>
-				</div>
-				<div class="pageHeader_tabs">
-					<ul class="tabs">
-						<li class="active">
-							<a href="#pizzas-tradicionais">
-								Tradicionais
-							</a>
-						</li>
-						<li>
-							<a href="#pizzas-premium">
-								Premium
-							</a>
-						</li>
-						<li>
-							<a href="#pizzas-doces">
-								Doces
-							</a>
-						</li>
-						<li>
-							<a href="#bebidas">
-								Bebidas
-							</a>
-						</li>
-					</ul>
-				</div>
-			</header>
-		</div>
-
-		<div class="wrap">
-			<div id="cardapio">
-
-				<ul id="pizzas-tradicionais">
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img round-a">
+				</a>
+				<h1>Cardápio</h1>
+			</div>
+			<div class="pageHeader_tabs">
+				<ul class="tabs">
+					<li class="active">
+						<a href="#pizzas-tradicionais">
+							Tradicionais
+						</a>
 					</li>
-
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
+					<li>
+						<a href="#pizzas-premium">
+							Premium
+						</a>
 					</li>
-
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-							<p class="item-price">Grande R$ 50</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
+					<li>
+						<a href="#pizzas-doces">
+							Doces
+						</a>
+					</li>
+					<li>
+						<a href="#bebidas">
+							Bebidas
+						</a>
 					</li>
 				</ul>
-
-				<ul id="pizzas-premium">
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img round-a">
-					</li>
-
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
-					</li>
-
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-							<p class="item-price">Grande R$ 50</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
-					</li>
-				</ul>
-
-				<ul id="pizzas-doces">
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img round-a">
-					</li>
-
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
-					</li>
-
-					<li class="cardapio-item">
-						<div class="item-info">
-							<h4 class="item-title">Frango com Catupiry</h4>
-							<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-							<p class="item-price">Grande R$ 50</p>
-						</div>
-						<img src="img/sabora.jpg" class="item-img">
-					</li>
-				</ul>
-
 			</div>
 		</div>
+	</header>
 
+	<!-- data-dismiss="modal" -->
+	<!-- data-target="numSabores" data-toggle="modal" -->
+
+	<section>
+		<div id="cardapio" class="cardapio_wrap">
+
+			<ul id="pizzas-tradicionais">
+				<li id="pizza_portuguesa" class="cardapio-item">
+					<div class="gambis" data-target="viewPizza" data-toggle="modal"></div>
+					<div class="item-info">
+						<h4 class="item-title">Portuguesa</h4>
+						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+					</div>
+					<img src="img/sabora.jpg" class="item-img round-a">
+				</li>
+			</ul>
+
+			<ul id="pizzas-premium">
+				<li id="pizza_sertaneja" class="cardapio-item">
+					<div class="gambis" data-target="viewPizza" data-toggle="modal"></div>
+					<div class="item-info">
+						<h4 class="item-title">Sertaneja</h4>
+						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+					</div>
+					<img src="img/sabora.jpg" class="item-img round-a">
+				</li>
+			</ul>
+
+			<ul id="pizzas-doces">
+				<li id="pizza_sensacao" class="cardapio-item">
+					<div class="item-info">
+						<h4 class="item-title">Sensação</h4>
+						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+					</div>
+					<img src="img/sabora.jpg" class="item-img round-a">
+				</li>
+			</ul>
+		</div>
 	</section>
+
+
+	<!-- Modais -->
+
+	<div id="viewPizza" class="modal">
+		<div id="thePizza">
+			<img src="" class="thePizza_img fluid">
+			<h4 class="thePizza_title"></h4>
+			<p class="thePizza_description"></p>
+		</div>
+		<nav class="nav-inferior">
+			<button data-dismiss="modal" class="botao-acao">
+				Fechar
+			</button>
+		</nav>
+	</div>
 
 </body>
 </html>
