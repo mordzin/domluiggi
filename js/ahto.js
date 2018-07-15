@@ -43,9 +43,9 @@
 		thePizza_img = $(this).children("img").attr('src');
 		thePizza_title = $(this).children("item-title").html();
 		thePizza_description = $(this).children("item-description").html();
-		$('#thePizza>.thePizza_img').attr('src', thePizza_img);
-		$('#thePizza>.thePizza_title').html(thePizza_title);
-		$('#thePizza>.thePizza_description').html(thePizza_description);
+		$('#thePizza>div>.thePizza_img').attr('src', thePizza_img);
+		$('#thePizza>div>.thePizza_title').html(thePizza_title);
+		$('#thePizza>div>.thePizza_description').html(thePizza_description);
 	});
 
 });

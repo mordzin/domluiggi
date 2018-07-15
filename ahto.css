@@ -368,6 +368,28 @@ h3 {
 	background-color: var(--brand1) !important;
 }
 
+.nav-inferior {
+	display: grid;
+	position: fixed;
+	justify-content: center;
+	bottom: 0;	
+}
+
+.btn-action {
+	display: grid;
+	align-content: center;
+	padding: 1em 1.5em;
+	background-color: #000;
+	border-radius: 4em;
+	border: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 0.825em;
+	margin-bottom: 2.5em;
+}
+
+
 /* === Details === */
 
 .bg-pizza	 {
@@ -515,6 +537,30 @@ h3 {
 
  	#pageHeader .pageHeader_tabs .tabs:first-child {
  		margin-left: 0;
+ 	}
+
+ 	#thePizza {
+ 		position: relative;
+ 		display: grid;
+ 		grid-template-rows: 100vh;
+ 	}
+
+ 	#thePizza .thePizza_img {
+ 		width: 100%;
+ 		height: 100%;
+ 		object-fit: cover;
+ 	}
+
+ 	#thePizza .thePizza_info {
+ 		position: absolute;
+ 		display: grid;
+ 		bottom: 0;
+ 	}
+
+ 	#thePizza .thePizza_info {
+ 		position: absolute;
+ 		display: grid;
+ 		bottom: 0;
  	}
 
  }
