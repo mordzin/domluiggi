@@ -115,7 +115,7 @@
 
 			<ul id="pizzas-tradicionais">
 				<li id="pizza_portuguesa" class="cardapio-item">
-					<div class="gambis" data-target="viewPizza" data-toggle="modal"></div>
+					<div class="gambis" data-target="thePizza" data-toggle="modal"></div>
 					<div class="item-info">
 						<h4 class="item-title">Córdoba</h4>
 						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
@@ -126,7 +126,7 @@
 
 			<ul id="pizzas-premium">
 				<li id="pizza_sertaneja" class="cardapio-item">
-					<div class="gambis" data-target="viewPizza" data-toggle="modal"></div>
+					<div class="gambis" data-target="thePizza" data-toggle="modal"></div>
 					<div class="item-info">
 						<h4 class="item-title">Mignon com Catupiry</h4>
 						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
@@ -150,23 +150,30 @@
 
 	<!-- Modais -->
 
-	<div id="viewPizza" class="modal">
-		<div id="thePizza">
+	<section id="thePizza" class="modal">
+		<div class="thePizza_overlay">
+		<button data-dismiss="modal" class="btn-i fixed-a corner-a">
+			<i class="material-icons">
+				arrow_back
+			</i>
+		</button>
+		<div class="grid" style="padding-top: 4.5rem;">
+			<img src="" id="thePizza_img" style="z-index: -1;">
 			<div class="wrap">
-				<img src="" class="thePizza_img">
-				<div class="thePizza_info txt-white">
-
-					<h2 class="thePizza_title">Pizza Córdoba</h2>
-					<p class="thePizza_description">Lorem ipsum dolor sit amet.</p>
+				<div class="magic-padding txt-white">
+					<h2 id="thePizza_title">Lorem ipsum</h2>
+					<p id="thePizza_description">Lorem ipsum</p>
 				</div>
 			</div>
+
+			<nav class="nav-inferior">
+				<button data-dismiss="modal" class="btn-action">
+					Fechar
+				</button>
+			</nav>
 		</div>
-		<nav class="nav-inferior">
-			<button data-dismiss="modal" class="btn-action">
-				Fechar
-			</button>
-		</nav>
 	</div>
+	</section>
 
 </body>
 </html>

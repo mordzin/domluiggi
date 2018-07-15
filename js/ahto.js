@@ -35,17 +35,12 @@
 		}
 	});
 
-	var thePizza_img = 0;
-	var thePizza_title = 0;
-	var thePizza_description = 0;
-
 	$('#cardapio>ul>[id^="pizza_"]').click(function(){
-		thePizza_img = $(this).children("img").attr('src');
-		thePizza_title = $(this).children("item-title").html();
-		thePizza_description = $(this).children("item-description").html();
-		$('#thePizza>div>.thePizza_img').attr('src', thePizza_img);
-		$('#thePizza>div>.thePizza_title').html(thePizza_title);
-		$('#thePizza>div>.thePizza_description').html(thePizza_description);
+		pizza_img = $(this).children("img").attr('src');
+		pizza_title = $(this).children("item-info>item-title").html();
+		pizza_description = $(this).children("item-info>item-description").html();
+		$('#thePizza_img').attr('src', pizza_img);
+		$('#thePizza_title').text(pizza_title);
+		$('#thePizza_description').text(pizza_description);
 	});
-
 });
