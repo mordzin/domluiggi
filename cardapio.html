@@ -107,41 +107,19 @@
 
 	<div class="btn bg-brand1 move fixed-c corner-c">Pedir online</div>
 
-	<!-- data-dismiss="modal" -->
-	<!-- data-target="numSabores" data-toggle="modal" -->
-
 	<section>
 		<div id="cardapio" class="cardapio_wrap">
 
-			<ul id="pizzas-tradicionais">
-				<li id="pizza_portuguesa" class="cardapio-item">
-					<div class="gambis" data-target="thePizza" data-toggle="modal"></div>
-					<div class="item-info">
-						<h4 class="item-title">Córdoba</h4>
-						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-					</div>
-					<img src="img/cordoba.jpg" class="item-img round-a">
-				</li>
-			</ul>
-
 			<ul id="pizzas-premium">
-				<li id="pizza_sertaneja" class="cardapio-item">
-					<div class="gambis" data-target="thePizza" data-toggle="modal"></div>
+
+
+				<li class="cardapio-item">
+					<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
 					<div class="item-info">
 						<h4 class="item-title">Mignon com Catupiry</h4>
 						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
 					</div>
 					<img src="img/mignon-catupiry.jpg" class="item-img">
-				</li>
-			</ul>
-
-			<ul id="pizzas-doces">
-				<li id="pizza_sensacao" class="cardapio-item">
-					<div class="item-info">
-						<h4 class="item-title">Sertaneja</h4>
-						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
-					</div>
-					<img src="img/Sertaneja.jpg" class="item-img">
 				</li>
 			</ul>
 		</div>
@@ -150,29 +128,25 @@
 
 	<!-- Modais -->
 
-	<section id="thePizza" class="modal">
-		<div class="thePizza_overlay">
-		<button data-dismiss="modal" class="btn-i fixed-a corner-a">
-			<i class="material-icons">
-				arrow_back
-			</i>
-		</button>
-		<div class="grid" style="padding-top: 4.5rem;">
-			<img src="" id="thePizza_img" style="z-index: -1;">
-			<div class="wrap">
-				<div class="magic-padding txt-white">
-					<h2 id="thePizza_title">Lorem ipsum</h2>
-					<p id="thePizza_description">Lorem ipsum</p>
+	<section id="productView" class="modal">
+		<div class="productView_overlay">
+			
+			<div class="grid" style="height: 100%;">
+				<img src="" id="productView_img" style="z-index: -1;">
+				<div class="wrap" style="align-self: start;">
+					<div class="magic-padding txt-white">
+						<h2 id="productView_title">Lorem ipsum</h2>
+						<p id="productView_description">Lorem ipsum</p>
+					</div>
 				</div>
-			</div>
 
-			<nav class="nav-inferior">
-				<button data-dismiss="modal" class="btn-action">
-					Fechar
-				</button>
-			</nav>
+				<nav class="nav-inferior">
+					<button data-dismiss="modal" class="btn-action">
+						Fechar
+					</button>
+				</nav>
+			</div>
 		</div>
-	</div>
 	</section>
 
 </body>
