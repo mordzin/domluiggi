@@ -34,15 +34,7 @@
 			$(this).addClass('active');
 		}
 	});
-
-	// $('#cardapio>ul>[id^="pizza_"]').click(function(){
-	// 	pizza_img = $(this).children("img").attr('src');
-	// 	pizza_title = $(this).children(".item-info>.item-title").html();
-	// 	pizza_description = $(this).children(".item-info>.item-description").html();
-	// 	$('#productView_img').attr('src', pizza_img);
-	// 	$('#productView_title').html(pizza_title);
-	// 	$('#productView_description').html(pizza_description);
-	// });
+	
 	$('#cardapio>ul>li').click(function(){
 		pizza_img = $("img", this).attr('src');
 		pizza_title = $(".item-title", this).text();

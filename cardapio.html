@@ -116,8 +116,12 @@
 				<li class="cardapio-item">
 					<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
 					<div class="item-info">
-						<h4 class="item-title">Mignon com Catupiry</h4>
-						<p class="item-description">Lorem ipsum dolor sit amet, consectetur.</p>
+						<h4 class="item-title">
+							Mignon com Catupiry
+						</h4>
+						<p class="item-description">
+							Mussarela, filet mignon e catupiry
+						</p>
 					</div>
 					<img src="img/mignon-catupiry.jpg" class="item-img">
 				</li>
@@ -130,24 +134,38 @@
 
 	<section id="productView" class="modal">
 		<div class="productView_overlay">
-			
 			<div class="grid" style="height: 100%;">
-				<img src="" id="productView_img" style="z-index: -1;">
-				<div class="wrap" style="align-self: start;">
+
+				<nav class="nav-superior">
+					<button data-dismiss="modal" class="btn-i fixed-a corner-a">
+						<i class="material-icons" data-dismiss="modal">
+							arrow_back
+						</i>
+					</button>
+				</nav>
+
+				<img src="" id="productView_img">
+				<div class="wrap" style="align-self: center; height: 100%; padding-top: 2.5rem;">
 					<div class="magic-padding txt-white">
-						<h2 id="productView_title">Lorem ipsum</h2>
+						<h1 id="productView_title">Lorem ipsum</h1>
 						<p id="productView_description">Lorem ipsum</p>
 					</div>
 				</div>
 
+
 				<nav class="nav-inferior">
 					<button data-dismiss="modal" class="btn-action">
-						Fechar
+						Pedir Online
+					</button>
+					<button data-dismiss="modal" class="btn-action">
+						Ligar
 					</button>
 				</nav>
+
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
 </body>
 </html>
