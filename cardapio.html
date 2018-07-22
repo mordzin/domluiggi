@@ -13,16 +13,16 @@
 	crossorigin="anonymous"></script>
 	<script src="js/ahto.js"></script>
 </head>
-<body style="background-color: #F5F1ED; padding-top: 5.5rem;">
+<body>
 	<header id="mainHeader">
 		<nav id="mainMenu" style="display: none;">
 			<ul>
-				<li class="active">
+				<li>
 					<a href="index.html">
 						Home
 					</a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="cardapio.html">
 						Cardápio
 					</a>
@@ -62,7 +62,7 @@
 	</header>
 
 	<div class="btn bg-brand1 move fixed-c corner-c">Pedir online</div>
-	<hedaer id="pageHeader">
+	<header id="pageHeader" class="magic-padding-y">
 		<div class="wrap">
 			<div class="pageHeader_title">
 				<a href="index.html">
@@ -105,9 +105,7 @@
 
 	<section>
 		<div id="cardapio" class="cardapio_wrap">
-
 			<ul id="pizzas-premium">
-
 
 				<li class="cardapio-item">
 					<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
@@ -118,9 +116,29 @@
 						<p class="item-description">
 							Mussarela, filet mignon e catupiry
 						</p>
+						<p class="item-price">
+							Grande R$ 50
+						</p>
 					</div>
 					<img src="img/mignon-catupiry.jpg" class="item-img">
 				</li>
+
+				<li class="cardapio-item">
+					<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
+					<div class="item-info">
+						<h4 class="item-title">
+							Strogonoff de Camarão
+						</h4>
+						<p class="item-description">
+							Mussarela, camarão, champignon, creme de leite e batata palha.
+						</p>
+						<p class="item-price">
+							Grande R$ 50
+						</p>
+					</div>
+					<img src="img/mignon-catupiry.jpg" class="item-img">
+				</li>
+
 			</ul>
 		</div>
 	</section>
@@ -132,36 +150,29 @@
 		<div class="productView_overlay">
 			<div class="grid" style="height: 100%;">
 
-				<header class="mainHeader">
-					<button data-dismiss="modal" class="btn-i fixed-a corner-a">
-						<i class="material-icons" data-dismiss="modal">
-							arrow_back
-						</i>
-					</button>
-				</header>
+				<button data-dismiss="modal" class="btn-i fixed-a corner-a">
+					<i class="material-icons" data-dismiss="modal">
+						arrow_back
+					</i>
+				</button>
 
 				<img src="" id="productView_img">
-				<div class="wrap" style="align-self: center; height: 100%; padding-top: 2.5rem;">
+				<div class="wrap" style="margin-top: 4.5rem;">
 					<div class="magic-padding txt-white">
 						<h1 id="productView_title">Lorem ipsum</h1>
 						<p id="productView_description">Lorem ipsum</p>
 					</div>
+					<div class="grid magic-padding-x">
+						<div style="display: inline-block;">
+							<button class="btn corner-a">
+								Ligar
+							</button>
+							<button class="btn corner-c">
+								Pedir online
+							</button>
+						</div>
+					</div>
 				</div>
-
-
-				<nav class="nav-inferior">
-					<a href="http://deliveryapp.neemo.com.br/delivery/588" target="_blank">
-					<button data-dismiss="modal" class="btn-action corner-a" target="_blank">
-						Pedir Online
-					</button>
-					</a>
-					<a href="tel:554832820048">
-					<button class="btn-action bg-brand1 corner-c">
-						Ligar
-					</button>
-					</a>
-				</nav>
-
 			</div>
 		</div>
 	</div>
