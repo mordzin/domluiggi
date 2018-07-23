@@ -165,8 +165,8 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 									<p class="item-price">';
 							if($row["custo_gigante"] > 1) echo ' Gigante R$ ' .$row["custo_gigante"];
               if($row["custo_grande"] > 1) echo ' Grande R$ ' .$row["custo_grande"];
-              if($row["custo_media"] > 1) echo ' Média R$ ' .$row["custo_media"];
-              if($row["custo_pequena"] > 1) echo ' Pequena R$ ' .$row["custo_pequena"];
+              // if($row["custo_media"] > 1) echo ' Média R$ ' .$row["custo_media"];
+              // if($row["custo_pequena"] > 1) echo ' Pequena R$ ' .$row["custo_pequena"];
               echo '</p>
 							</div>
 							<img class="thumb-pizza" src="img/pizzas/'.strtolower($row["nome"]).'.jpg">
@@ -195,11 +195,15 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 					</div>
 					<div class="grid magic-padding-x">
 						<div style="display: inline-block;">
-							<button class="btn corner-a">
+							<button class="btn corner-a" style="float: left;">
+								<a href="tel:3282-0048">
 								Ligar
+								</a>
 							</button>
-							<button class="btn corner-c">
+							<button class="btn corner-c" style="float: left; margin-left: 1rem;">
+								<a href="http://deliveryapp.neemo.com.br/delivery/588/menu" target="_blank">
 								Pedir online
+								</a>
 							</button>
 						</div>
 					</div>
