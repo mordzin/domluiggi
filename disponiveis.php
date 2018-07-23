@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-$mysqli = new mysqli('localhost', 'pizzapizza', 'facapartedesseahto', 'kiuipizza');
+$mysqli = new mysqli('localhost', 'root', 'Ahto@ht0', 'domluiggi');
 
 if ($mysqli->connect_error) {
     die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
@@ -30,6 +30,9 @@ while($row = $ingredientes->fetch_assoc()){
 $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error);
 ?>
   <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    <script type="application/javascript" src="js/jquery.js"></script>
+    <script type="application/javascript" src="js/echo.js"></script>
   </head>
   <body>
     <div id="container">
@@ -56,9 +59,10 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
             <td><input id="tipo" type="text" name="tipo" placeholder="Tipo"></td>
             <td id="ingredientes">
               <?php foreach($ingredientes as $pi){
-                echo "<input type='checkbox' name='ingrediente".$pi['idingrediente']."' value='".$pi['nome']."'>".$pi['nome']."</input><br>";
+                echo "<input type='checkbox' name='ingrediente".$pi['idingrediente']."'  id='ingrediente".$pi['idingrediente']."' value='".$pi['nome']."'><label for='ingrediente".$pi['idingrediente']."'>".$pi['nome']."</label><br>";
               }
-            ?></td>
+            ?>
+            </td>
             <td><input id="custo_gigante" type="number" name="custo_gigante" placeholder="Custo - Gigante"></td>
             <td><input id="custo_grande" type="number" name="custo_grande" placeholder="Custo - Grande"></td>
             <td><input id="custo_media" type="number" name="custo_media" placeholder="Custo - Média"></td>
@@ -71,7 +75,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
                               var settings = {
                                 "async": true,
                                 "crossDomain": true,
-                                "url": "http://pizza.ahto.digital/apir.php",
+                                "url": "http://domluiggi.ahto.digital/apir.php",
                                 "method": "POST",
                                 "headers": {
                                   "Content-Type": "application/x-www-form-urlencoded",
@@ -91,11 +95,14 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
               </button>
             </td>
           </form>
+          <td><input type='text' id="ingrediente" name="nome" placeholder="Adicionar Ingrediente">
+            <button onclick="$.ajax({url: 'http://domluiggi.ahto.digital/apir.php?op=add_ingrediente&nome='+$('#ingrediente').val()});">
+                          Add. Ingrediente</button></td>
         </tr>
       <?php
       while($row = $results->fetch_assoc()) {
             print '<tr class="enabled">';
-            print '<td><img src="img/pizzas/'.strtolower($row["nome"]).'.jpg"</td>';
+            print '<td><img src="https://www.solodev.com/assets/lazy-load-with-echo/image-loader.gif"  data-echo="img/pizzas/'.strtolower($row["nome"]).'.jpg"></td>';
             print '<td>'.$row["idpizzas_available"]. " - ".$row["nome"].'</td>';
             print '<td>'.$row["tipo"].'</td>';
             print '<td>';
@@ -112,12 +119,12 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
             print '<td>R$'.$row["custo_pequena"].'</td>';
             if($row["ativo"] == 1){
               print '<td>Habilitada</td>';
-              print '<td><button onclick="$.ajax({url: \'http://pizza.ahto.digital/apir.php?op=desativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Desativar</button></td>';
+              print '<td><button onclick="$.ajax({url: \'http://domluiggi.ahto.digital/apir.php?op=desativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Desativar</button></td>';
               print '<td><button>Desabilite primeiro</button></td>';
             }else{
               print '<td>Desabilitada</td>';
-              print '<td><button onclick="$.ajax({url: \'http://pizza.ahto.digital/apir.php?op=ativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Ativar</button></td>';
-              print '<td><button onclick="swal(\'Você está certo disso?\', {buttons: [\'Cancelar\', \'Sim\'],icon: \'error\'}).then(function (result) {if(result){$.ajax({url: \'http://pizza.ahto.digital/apir.php?op=deleta_pizza_available&id=' . $row['idpizzas_available'] .'\'});                                      swal(\'Pizza deletada!\', \'\', \'success\').then(function (result) {window.location.reload(true);});} });">Apagar</button></td>';
+              print '<td><button onclick="$.ajax({url: \'http://domluiggi.ahto.digital/apir.php?op=ativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Ativar</button></td>';
+              print '<td><button onclick="swal(\'Você está certo disso?\', {buttons: [\'Cancelar\', \'Sim\'],icon: \'error\'}).then(function (result) {if(result){$.ajax({url: \'http://domluiggi.ahto.digital/apir.php?op=deleta_pizza_available&id=' . $row['idpizzas_available'] .'\'});                                      swal(\'Pizza deletada!\', \'\', \'success\').then(function (result) {window.location.reload(true);});} });">Apagar</button></td>';
             }
             print '</tr>';
       } ?>
@@ -125,10 +132,12 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
     </table>
     </div>
   </body>
-  <script type="application/javascript" src="js/jquery.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/disponiveis.css" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script type="text/javascript" defer>
+  var t=setInterval(function(){echo.init()},3000);
+  </script>
 </html>

@@ -1,3 +1,31 @@
+<?php
+$mysqli = new mysqli('localhost', 'root', 'Ahto@ht0', 'domluiggi');
+if ($mysqli->connect_error) {
+    die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
+}
+$pizzas_array = array();
+$pizza_has_ingredientes_array = array();
+$ingredientes_array = array();
+$pizzas = $mysqli->query("select * from pizzas_available")or die($mysqli->error);
+$pizza_has_ingredientes = $mysqli->query("select * from pizzas_available inner join pizzas_available_has_sabor on pizzas_available.idpizzas_available = pizzas_available_has_sabor.pizzas_available_idpizzas_available inner join sabor on sabor.idsabor = pizzas_available_has_sabor.sabor_idsabor inner join sabor_has_ingrediente on sabor_has_ingrediente.sabor_idsabor = sabor.idsabor inner join ingrediente on ingrediente.idingrediente = sabor_has_ingrediente.ingrediente_idingrediente")or die($mysqli->error);
+$ingredientes = $mysqli->query("select * from ingrediente order by nome")or die($mysqli->error);
+$i=0;
+while($row = $pizza_has_ingredientes->fetch_assoc()){
+  foreach($row as $paramName => $paramValue){
+    $pizza_has_ingredientes_array[$i][$paramName] = $paramValue;
+  }
+  $i++;
+}
+$i=0;
+while($row = $ingredientes->fetch_assoc()){
+  foreach($row as $paramName => $paramValue){
+    $ingredientes_array[$i][$paramName] = $paramValue;
+  }
+  $i++;
+}
+$results = $mysqli->query("select * from pizzas_available")or die($mysqli->error);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +39,7 @@
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 	integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
 	crossorigin="anonymous"></script>
-	<script src="js/ahto.js"></script>
+  <script type="application/javascript" src="js/echo.js"></script>
 </head>
 <body>
 	<header id="mainHeader">
@@ -44,13 +72,13 @@
 				</li>
 			</ul>
 		</nav>
-		
+
 		<div class="logo">
 			<a href="index.html">
 				<h3>Dom Luiggi</h3>
 			</a>
 		</div>
-		
+
 		<div class="nothing"></div>
 		<div class="menu">
 			<button id="menuButton" class="menu btn-i corner-b fixed-b" onclick="$('#mainMenu').toggle();">
@@ -76,26 +104,31 @@
 			</div>
 			<div class="pageHeader_tabs">
 				<ul class="tabs">
-					<li class="active">
+					<li id="tab-trad" class="active">
 						<a href="#pizzas-tradicionais">
 							Tradicionais
 						</a>
 					</li>
-					<li>
-						<a href="#pizzas-premium">
-							Premium
+					<li id="tab-nobres">
+						<a href="#pizzas-nobres">
+							Nobres
 						</a>
 					</li>
-					<li>
+          <li id="tab-doces" >
 						<a href="#pizzas-doces">
 							Doces
 						</a>
 					</li>
-					<li>
+          <li id="tab-especiais" >
+            <a href="#pizzas-doces">
+              Especiais
+            </a>
+          </li>
+					<!--<li id="tab-bebidas" >
 						<a href="#bebidas">
 							Bebidas
 						</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 		</div>
@@ -103,49 +136,47 @@
 
 	<div class="btn bg-brand1 move fixed-c corner-c">Pedir online</div>
 
-	<section>
+	<section id="">
 		<div id="cardapio" class="cardapio_wrap">
 			<ul id="pizzas-premium">
+				<?php
+	      while($row = $results->fetch_assoc()) {
+					if($row["ativo"] == 1){
+						echo '<li class="cardapio-item ' .$row["tipo"]. '">
+										<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
+											<div class="item-info">
+											<h4 class="item-title">';
+						echo $row["nome"];
+						echo '</h4><p class="item-description">';
+						$first = true;
+						foreach($pizza_has_ingredientes_array as $pi){
+							if($pi['idpizzas_available'] == $row['idpizzas_available']){
+									if($first){
+										printf(ucfirst($pi['nome']));
+										$first = false;
+									}else {
+										echo ", " .ucfirst($pi['nome']);
+									}
+							}
+						}
+						echo ".";
 
-				<li class="cardapio-item">
-					<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
-					<div class="item-info">
-						<h4 class="item-title">
-							Mignon com Catupiry
-						</h4>
-						<p class="item-description">
-							Mussarela, filet mignon e catupiry
-						</p>
-						<p class="item-price">
-							Grande R$ 50
-						</p>
-					</div>
-					<img src="img/mignon-catupiry.jpg" class="item-img">
-				</li>
-
-				<li class="cardapio-item">
-					<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
-					<div class="item-info">
-						<h4 class="item-title">
-							Strogonoff de Camarão
-						</h4>
-						<p class="item-description">
-							Mussarela, camarão, champignon, creme de leite e batata palha.
-						</p>
-						<p class="item-price">
-							Grande R$ 50
-						</p>
-					</div>
-					<img src="img/mignon-catupiry.jpg" class="item-img">
-				</li>
-
+						echo '</p>
+									<p class="item-price">';
+							if($row["custo_gigante"] > 1) echo ' Gigante R$ ' .$row["custo_gigante"];
+              if($row["custo_grande"] > 1) echo ' Grande R$ ' .$row["custo_grande"];
+              if($row["custo_media"] > 1) echo ' Média R$ ' .$row["custo_media"];
+              if($row["custo_pequena"] > 1) echo ' Pequena R$ ' .$row["custo_pequena"];
+              echo '</p>
+							</div>
+							<img class="thumb-pizza" src="img/pizzas/'.strtolower($row["nome"]).'.jpg">
+						</li>';
+					}
+				}?>
 			</ul>
 		</div>
 	</section>
-
-
 	<!-- Modais -->
-
 	<section id="productView" class="modal">
 		<div class="productView_overlay">
 			<div class="grid" style="height: 100%;">
@@ -177,6 +208,6 @@
 		</div>
 	</div>
 </section>
-
 </body>
+<script src="js/ahto.js"></script>
 </html>

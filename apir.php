@@ -1,5 +1,5 @@
 <?php
-$con = @mysqli_connect('localhost', 'pizzapizza', 'facapartedesseahto', 'kiuipizza');
+$con = @mysqli_connect('localhost', 'root', 'Ahto@ht0', 'domluiggi');
 // var_dump(run_query('select * from pedido inner join pedido_has_pizza on pedido_has_pizza.pedido_ID = pedido.ID inner join pizza on pizza.id = pedido_has_pizza.pizza_id inner join pizza_has_sabor on pizza_has_sabor.pizza_id = pizza.id inner join sabor on sabor.idsabor = pizza_has_sabor.sabor_idsabor;', $con));
 if (isset($_GET['update'])) {
 	update($_GET['id'], $_GET['status']);
@@ -136,7 +136,7 @@ function add_ingrediente($nome){
 function run_query($query, $insert = false){
 	global $con;
 	if (!$con) {
-		echo "Error: " . mysqli_connect_error();
+		echo "Error3: " . mysqli_connect_error();
 		exit();
 	}
 	$request = mysqli_query($con, $query);
@@ -162,9 +162,9 @@ function update($id, $status){
 }
 
 function connect(){
-	$con = mysqli_connect('localhost', 'pizzapizza', 'facapartedesseahto', 'kiuipizza');
+	$con = mysqli_connect('localhost', 'root', 'Ahto@hto', 'domluiggi');
 	if (!$con) {
-		echo "Error: " . mysqli_connect_error();
+		echo "Error1: " . mysqli_connect_error();
 		exit();
 	}
 	return $con;

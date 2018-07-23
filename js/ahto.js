@@ -1,9 +1,3 @@
-/**
- * Author: Fatima Aurelia
- * Date: 01/22/2017
- * Version: 1.0
- */
-
  document.addEventListener('click', function (e) {
  	e = e || window.event;
  	var target = e.target || e.srcElement;
@@ -25,6 +19,7 @@
 }, false);
 
  $( document ).ready(function() {
+   echo.init(); //inicia o lazy load
 
 	//Adiciona .active na aba selecionada no cardápio
 
@@ -34,7 +29,7 @@
 			$(this).addClass('active');
 		}
 	});
-	
+
 	$('#cardapio>ul>li').click(function(){
 		pizza_img = $("img", this).attr('src');
 		pizza_title = $(".item-title", this).text();
@@ -43,4 +38,33 @@
 		$('#productView_title').text(pizza_title);
 		$('#productView_description').text(pizza_description);
 	});
+
+  //Mostra/esconde as pizzas correspondentes a aba ativa
+  $(".Tradicional, .Nobre, .Doce, .Bebida, .Especiais").hide();
+  $(".Tradicional").show();
+  $("#tab-trad").click(function(){
+    $(".Tradicional, .Nobre, .Doce, .Bebida, .Especiais").hide();
+    $(".Tradicional").show();
+  });
+
+  $("#tab-nobres").click(function(){
+    $(".Tradicional, .Nobre, .Doce, .Bebida, .Especiais").hide();
+    $(".Nobre").show();
+  });
+
+  $("#tab-doces").click(function(){
+    $(".Tradicional, .Nobre, .Doce, .Bebida, .Especiais").hide();
+    $(".Doce").show();
+  });
+
+  $("#tab-especiais").click(function(){
+    $(".Tradicional, .Nobre, .Doce, .Bebida, .Especiais").hide();
+    $(".Especiais").show();
+  });
+
+  $("#tab-bebidas").click(function(){
+    $(".Tradicional, .Nobre, .Doce, .Bebida, .Especiais").hide();
+    $(".Bebida").show();
+  });
+
 });

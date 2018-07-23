@@ -26,11 +26,9 @@ table {
   margin: 0;
   border-spacing: 0;
   background: linear-gradient(-68deg, #ac32e4d0, #4801ffff);
-  height: 100vh;
   overflow: scroll;
   border-radius: 20px;
   text-transform: capitalize;
-  min-width: 70vw;
 }
 
 .enabled {
@@ -44,7 +42,6 @@ table {
 tr,
 td {
   margin: 0;
-  height: 50px;
   text-align: left;
   border: none;
 }
@@ -54,7 +51,8 @@ tr:hover {
 }
 
 td {
-  padding: 0 10px;
+  padding: 10px;
+  min-width: 167px;
 }
 
 .titles td {

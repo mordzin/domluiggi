@@ -11,7 +11,7 @@
 	position: relative;
 }
 
-:root {																																														
+:root {
 	--white: #fff;
 	--black: #000;
 	--dark: #000;
@@ -142,8 +142,8 @@ section,
 	margin-left: 1rem;
 }
 
-#pageHeader .pageHeader_tabs::-webkit-scrollbar { 
-	display: none; 
+#pageHeader .pageHeader_tabs::-webkit-scrollbar {
+	display: none;
 }
 
 #pageHeader .pageHeader_tabs .tabs li {
@@ -163,7 +163,7 @@ section,
 
 
 .fullscreen {
-	grid-auto-rows: minmax(100vh, auto); 
+	grid-auto-rows: minmax(100vh, auto);
 }
 
 .fluid {
@@ -282,7 +282,7 @@ h3 {
 	display: grid;
 	align-content: center;
 	justify-content: center;
-	border-radius: 4rem;	
+	border-radius: 4rem;
 	height: 2.5rem;
 	padding: 0 1rem;
 	background-color: #fff;
@@ -355,6 +355,10 @@ h3 {
 
 #cardapio .item-img {
 	object-fit: cover;
+	width: 100%;
+}
+
+.thumb-pizza {
 	width: 100%;
 }
 
@@ -596,7 +600,7 @@ h3 {
  	}
 
  	.l-show {
- 		display: 
+ 		display:
  	}
 
  	.cardapio_wrap {

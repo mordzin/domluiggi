@@ -22,34 +22,34 @@
 		<nav id="mainMenu" style="display: none;">
 			<ul>
 				<li class="active">
-					<a href="index.html">
+					<a href="index">
 						Home
 					</a>
 				</li>
 				<li>
-					<a href="cardapio.html">
+					<a href="cardapio">
 						Cardápio
 					</a>
 				</li>
 				<li>
-					<a href="promocoes.html">
+					<a href="promocoes">
 						Promoções
 					</a>
 				</li>
 				<li>
-					<a href="entrega.html">
+					<a href="entrega">
 						Entrega
 					</a>
 				</li>
 				<li>
-					<a href="contato.html">
+					<a href="contato">
 						Contato
 					</a>
 				</li>
 			</ul>
 		</nav>
 		<div class="logo">
-			<a href="index.html">
+			<a href="index">
 				<h3>Dom Luiggi</h3>
 			</a>
 		</div>
@@ -73,7 +73,7 @@
 				<div class="um">
 					<h1 style="color: #fff;">Pizzaria Dom Luiggi. A Melhor Pizzaria nos Ingleses!</h1>
 					<p class="txt-white">Entrega ~ 45min</p>
-					<a href="cardapio.html">
+					<a href="cardapio">
 						<button class="btn corner-a">
 							Ver Cardápio
 						</button>
@@ -102,7 +102,7 @@
 	</section>
 
 	<section style="background-color: #F5F1ED; padding: 3rem 0;">
-		<div id="cardapio" class="cardapio_wrap" style="margin-bottom: 1.5rem;>
+		<div id="cardapio" class="cardapio_wrap" style="margin-bottom: 1.5rem;">
 		<ul id="pizzas-tradicionais">
 			<li class="cardapio-item">
 				<div class="item-info">
@@ -133,7 +133,7 @@
 		</ul>
 	</div>
 	<div class="wrap magic-padding-x">
-		<a href="cardapio.html">
+		<a href="cardapio">
 			<button class="btn corner-a bg-brand1">
 				Ver Cardápio Completo
 			</button>
@@ -154,7 +154,7 @@
 			</h1>
 			<p>
 				Aberto Das 18h às 23h30
-				*fechado nas Terças-feiras 
+				*fechado nas Terças-feiras
 			</p>
 		</div>
 	</div>
