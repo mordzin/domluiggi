@@ -6,8 +6,8 @@ if ($mysqli->connect_error) {
 $pizzas_array = array();
 $pizza_has_ingredientes_array = array();
 $ingredientes_array = array();
-$pizzas = $mysqli->query("select * from pizzas_available")or die($mysqli->error);
-$pizza_has_ingredientes = $mysqli->query("select * from pizzas_available inner join pizzas_available_has_sabor on pizzas_available.idpizzas_available = pizzas_available_has_sabor.pizzas_available_idpizzas_available inner join sabor on sabor.idsabor = pizzas_available_has_sabor.sabor_idsabor inner join sabor_has_ingrediente on sabor_has_ingrediente.sabor_idsabor = sabor.idsabor inner join ingrediente on ingrediente.idingrediente = sabor_has_ingrediente.ingrediente_idingrediente")or die($mysqli->error);
+$pizzas = $mysqli->query("select * from pizzas_available order by pizzas_available.nome")or die($mysqli->error);
+$pizza_has_ingredientes = $mysqli->query("select * from pizzas_available inner join pizzas_available_has_sabor on pizzas_available.idpizzas_available = pizzas_available_has_sabor.pizzas_available_idpizzas_available inner join sabor on sabor.idsabor = pizzas_available_has_sabor.sabor_idsabor inner join sabor_has_ingrediente on sabor_has_ingrediente.sabor_idsabor = sabor.idsabor inner join ingrediente on ingrediente.idingrediente = sabor_has_ingrediente.ingrediente_idingrediente order by pizzas_available.nome")or die($mysqli->error);
 $ingredientes = $mysqli->query("select * from ingrediente order by nome")or die($mysqli->error);
 $i=0;
 while($row = $pizza_has_ingredientes->fetch_assoc()){
@@ -23,7 +23,7 @@ while($row = $ingredientes->fetch_assoc()){
 	}
 	$i++;
 }
-$results = $mysqli->query("select * from pizzas_available")or die($mysqli->error);
+$results = $mysqli->query("select * from pizzas_available order by nome")or die($mysqli->error);
 ?>
 
 <!DOCTYPE html>
@@ -45,42 +45,71 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 	<header id="mainHeader">
 		<nav id="mainMenu" style="display: none;">
 			<ul>
-				<li>
-					<a href="index.html">
+				<li class="active">
+					<a href="index">
 						Home
 					</a>
 				</li>
-				<li class="active">
-					<a href="cardapio.html">
+				<li>
+					<a href="cardapio">
 						Cardápio
 					</a>
 				</li>
 				<li>
-					<a href="promocoes.html">
+					<a href="promocoes">
 						Promoções
 					</a>
 				</li>
 				<li>
-					<a href="entrega.html">
+					<a href="entrega">
 						Entrega
 					</a>
 				</li>
 				<li>
-					<a href="contato.html">
+					<a href="contato">
 						Contato
 					</a>
 				</li>
 			</ul>
 		</nav>
-
 		<div class="logo">
-			<a href="index.html">
+			<a href="index">
 				<h3>Dom Luiggi</h3>
 			</a>
 		</div>
-
-		<div class="nothing"></div>
-		<div class="menu">
+		<div class="nothing hide l-show"></div>
+		<div class="menuDesktop hide l-show">
+			<nav id="mainMenuDesktop">
+				<ul>
+					<li>
+						<a href="index">
+							Home
+						</a>
+					</li>
+					<li class="active">
+						<a href="cardapio">
+							Cardápio
+						</a>
+					</li>
+					<li>
+						<a href="promocoes">
+							Promoções
+						</a>
+					</li>
+					<li>
+						<a href="entrega">
+							Entrega
+						</a>
+					</li>
+					<li>
+						<a href="contato">
+							Contato
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<div class="menuMobile l-hide">
 			<button id="menuButton" class="menu btn-i corner-b fixed-b" onclick="$('#mainMenu').toggle();">
 				<i class="material-icons">
 					menu
@@ -88,12 +117,16 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 			</button>
 		</div>
 	</header>
+	<div class="btn bg-cta move fixed-c corner-c">
+		<a href="http://deliveryapp.neemo.com.br/delivery/588/menu" target="_black">
+			Pedir online
+		</a>
+	</div>
 
-	<div class="btn bg-brand1 move fixed-c corner-c">Pedir online</div>
 	<header id="pageHeader" class="magic-padding-y">
 		<div class="wrap">
 			<div class="pageHeader_title">
-				<a href="index.html">
+				<a href="index">
 					<button class="btn-i">
 						<i class="material-icons">
 							arrow_back
@@ -114,14 +147,14 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 							Nobres
 						</a>
 					</li>
-					<li id="tab-doces" >
-						<a href="#pizzas-doces">
-							Doces
-						</a>
-					</li>
 					<li id="tab-especiais" >
 						<a href="#pizzas-doces">
 							Especiais
+						</a>
+					</li>
+					<li id="tab-doces" >
+						<a href="#pizzas-doces">
+							Doces
 						</a>
 					</li>
 					<!--<li id="tab-bebidas" >
@@ -134,8 +167,6 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 		</div>
 	</header>
 
-	<div class="btn bg-brand1 move fixed-c corner-c">Pedir online</div>
-
 	<section id="">
 		<div id="cardapio" class="cardapio_wrap">
 			<ul id="pizzas-premium">
@@ -143,7 +174,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 				while($row = $results->fetch_assoc()) {
 					if($row["ativo"] == 1){
 						echo '<li class="cardapio-item ' .$row["tipo"]. '">
-						<div class="gambis" data-target="productView" data-toggle="modal" style="z-index: 99;"></div>
+						<div class="gambis" data-target="productView" data-toggle="modal"></div>
 						<div class="item-info">
 						<h4 class="item-title">';
 						echo $row["nome"];
@@ -210,8 +241,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 </body>
 <script src="js/ahto.js"></script>
 </html>
