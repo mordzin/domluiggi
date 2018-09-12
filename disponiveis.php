@@ -40,6 +40,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
         <tr class="titles">
           <td>Image</td>
           <td>Nome</td>
+          <td>Desc</td>
           <td>Tipo</td>
           <td>Ingredientes</td>
           <td>Custo - Gigante</td>
@@ -56,6 +57,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
             <input type="hidden" name="ativa" id="ativa" value="1">
             <td><input type="file" id="pic" name="pic" accept="image/*"></td>
             <td><input id="nome" type="text" name="nome" placeholder="Nome"></td>
+            <td><input id="desc" type="desc" name="desc" placeholder="Descrição"></td>
             <td><input id="tipo" type="text" name="tipo" placeholder="Tipo"></td>
             <td id="ingredientes">
               <?php foreach($ingredientes as $pi){
@@ -75,7 +77,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
                               var settings = {
                                 "async": true,
                                 "crossDomain": true,
-                                "url": "http://domluiggi.ahto.digital/apir.php",
+                                "url": "https://domluiggi.ahto.digital/apir.php",
                                 "method": "POST",
                                 "headers": {
                                   "Content-Type": "application/x-www-form-urlencoded",
@@ -96,7 +98,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
             </td>
           </form>
           <td><input type='text' id="ingrediente" name="nome" placeholder="Adicionar Ingrediente">
-            <button onclick="$.ajax({url: 'http://domluiggi.ahto.digital/apir.php?op=add_ingrediente&nome='+$('#ingrediente').val()});">
+            <button onclick="$.ajax({url: 'https://domluiggi.ahto.digital/apir.php?op=add_ingrediente&nome='+$('#ingrediente').val()});">
                           Add. Ingrediente</button></td>
         </tr>
       <?php
@@ -104,6 +106,7 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
             print '<tr class="enabled">';
             print '<td><img src="https://www.solodev.com/assets/lazy-load-with-echo/image-loader.gif"  data-echo="img/pizzas/'.strtolower($row["nome"]).'.jpg"></td>';
             print '<td>'.$row["idpizzas_available"]. " - ".$row["nome"].'</td>';
+            print '<td><input type="text" value="'.$row["description"].'" id="d'.$row["idpizzas_available"].'"><button id="'.$row["idpizzas_available"].'">OK</button> </td>';
             print '<td>'.$row["tipo"].'</td>';
             print '<td>';
             $i = 1;
@@ -119,12 +122,12 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
             print '<td>R$'.$row["custo_pequena"].'</td>';
             if($row["ativo"] == 1){
               print '<td>Habilitada</td>';
-              print '<td><button onclick="$.ajax({url: \'http://domluiggi.ahto.digital/apir.php?op=desativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Desativar</button></td>';
+              print '<td><button onclick="$.ajax({url: \'https://domluiggi.ahto.digital/apir.php?op=desativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Desativar</button></td>';
               print '<td><button>Desabilite primeiro</button></td>';
             }else{
               print '<td>Desabilitada</td>';
-              print '<td><button onclick="$.ajax({url: \'http://domluiggi.ahto.digital/apir.php?op=ativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Ativar</button></td>';
-              print '<td><button onclick="swal(\'Você está certo disso?\', {buttons: [\'Cancelar\', \'Sim\'],icon: \'error\'}).then(function (result) {if(result){$.ajax({url: \'http://domluiggi.ahto.digital/apir.php?op=deleta_pizza_available&id=' . $row['idpizzas_available'] .'\'});                                      swal(\'Pizza deletada!\', \'\', \'success\').then(function (result) {window.location.reload(true);});} });">Apagar</button></td>';
+              print '<td><button onclick="$.ajax({url: \'https://domluiggi.ahto.digital/apir.php?op=ativa_pizza&id=' . $row['idpizzas_available'] .'\'});window.location.reload(true);">Ativar</button></td>';
+              print '<td><button onclick="swal(\'Você está certo disso?\', {buttons: [\'Cancelar\', \'Sim\'],icon: \'error\'}).then(function (result) {if(result){$.ajax({url: \'https://domluiggi.ahto.digital/apir.php?op=deleta_pizza_available&id=' . $row['idpizzas_available'] .'\'});                                      swal(\'Pizza deletada!\', \'\', \'success\').then(function (result) {window.location.reload(true);});} });">Apagar</button></td>';
             }
             print '</tr>';
       } ?>
@@ -139,5 +142,28 @@ $results = $mysqli->query("select * from pizzas_available")or die($mysqli->error
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script type="text/javascript" defer>
   var t=setInterval(function(){echo.init()},3000);
+  $("button").click(function(){
+    var pizza = $(this).attr("id");
+  	var pizzaId = "#d" + pizza;
+  	console.log($(pizza).val());
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://domluiggi.ahto.digital/apir.php",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Cache-Control": "no-cache"
+      },
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "data": "op=update_desc&id="+pizza+"&desc='"+$(pizzaId).val()+"'"
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+  });
   </script>
 </html>

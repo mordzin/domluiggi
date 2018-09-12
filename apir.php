@@ -6,12 +6,19 @@ if (isset($_GET['update'])) {
 }
 
 $op = $_REQUEST['op'];
+var_dump($_REQUEST);
 switch ($op) {
 	case "add_pedido":
 		add_pedido($_GET['forma_de_pgto'], $_GET['troco'], $_GET['total'], 1);
 		break;
 	case "add_pizza":
 		add_pizza($_GET['tamanho'], $_GET['n_de_sabores'], $_GET['borda'], 1);
+		break;
+	case "add_bebida":
+		add_bebida($_POST['nome'], $_POST['descricao'], $_POST['preco']);
+		break;
+	case "add_borda":
+		add_borda($_POST['nome'], $_POST['descricao'], $_POST['custo_gigante'],$_POST['custo_grande'],$_POST['custo_media']);
 		break;
 	case "add_cliente":
   	add_pizza($_GET['nome'], $_GET['troco'], $_GET['total'], 1);
@@ -42,8 +49,17 @@ switch ($op) {
 		}
 	break;
 	case "deleta_pizza_available":
-			pizzas_available_has_sabor($_GET['id']);
+			del_pizzas_available_has_sabor($_GET['id']);
 			deleta_pizza_available($_GET['id']);
+			break;
+	case "deleta_bebida":
+			deleta_bebida($_GET['id']);
+			break;
+	case "deleta_borda":
+			deleta_borda($_GET['id']);
+			break;
+	case "update_desc":
+			update_desc($_POST['id'], $_POST['desc']);
 			break;
 }
 function add_pedido($forma_de_pgto, $troco, $total, $origem){
@@ -81,9 +97,23 @@ function deleta_pizza_available($id){
 	echo run_query($query, true);
 }
 
-function pizzas_available_has_sabor($id){
+function del_pizzas_available_has_sabor($id){
 	global $con;
 	$query = "delete from pizzas_available_has_sabor where pizzas_available_idpizzas_available = " . $id;
+	echo $query;
+	echo run_query($query, true);
+}
+
+function deleta_bebida($id){
+	global $con;
+	$query = "delete from bebida where idbebida = " . $id;
+	echo $query;
+	echo run_query($query, true);
+}
+
+function deleta_borda($id){
+	global $con;
+	$query = "delete from borda where idborda = " . $id;
 	echo $query;
 	echo run_query($query, true);
 }
@@ -91,6 +121,13 @@ function pizzas_available_has_sabor($id){
 function ativa_pizza($id){
 	global $con;
 	$query = "update pizzas_available set ativo = 1 where idpizzas_available = " . $id;
+	echo run_query($query, true);
+}
+
+function update_desc($id, $desc){
+	global $con;
+	$query = "update pizzas_available set description = ".$desc." where idpizzas_available = " . $id;
+	echo $query;
 	echo run_query($query, true);
 }
 
@@ -118,8 +155,16 @@ function add_cliente($nome, $cep, $tel, $endereco, $email){
 }
 function add_bebida($nome, $descricao, $preco){
 	$query = "insert into bebida (nome, descricao, preco)
-  values (" . $nome . ", " . $descricao . ", " . $preco . ")";
-	run_query($query);
+  values ('" . $nome . "', '" . $descricao . "', " . $preco . ")";
+	echo $query;
+	run_query($query, true);
+}
+
+function add_borda($nome, $descricao, $custo_gigante,$custo_grande,$custo_media){
+	$query = "insert into borda (nome, descricao, custo_media,custo_grande,custo_gigante,preco)
+  values ('" . $nome . "', '" . $descricao . "', " . $custo_media. ", " . $custo_grande. ", " . $custo_gigante . "," . $custo_gigante . ")";
+	echo $query;
+	run_query($query, true);
 }
 
 function add_sabor($nome){
@@ -162,7 +207,7 @@ function update($id, $status){
 }
 
 function connect(){
-	$con = mysqli_connect('localhost', 'root', 'Ahto@hto', 'domluiggi');
+	$con = mysqli_connect('localhost', 'root', 'Ahto@ht0', 'domluiggi');
 	if (!$con) {
 		echo "Error1: " . mysqli_connect_error();
 		exit();
